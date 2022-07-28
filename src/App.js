@@ -43,11 +43,12 @@ const App = () => {
 
     const timer = setInterval(() =>{
       checkForColumnOfThree()
+      setCurrentColorArrangement([...currentColorArrangement])
     }, 100)
     
     return () => clearInterval(timer)
 
-  },[checkForColumnOfThree])
+  },[checkForColumnOfThree, currentColorArrangement])
   console.log(currentColorArrangement) 
 
   return (
