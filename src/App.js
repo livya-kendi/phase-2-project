@@ -10,12 +10,14 @@ const candyColors = [
   'yellow'
 ]
 
-
+//app function
 const App = () => {
   const [currentColorArrangement, setCurrentColorArrangement] = useState([])
+  
 
+//rows and columns of four function
   const checkForColumnOfFour = () => {
-    for (let i = 0; i < 39; i++){
+    for (let i = 0; i <= 39; i++){
       const columnOfFour = [i, i +width, i + width * 2, i + width * 3 ]
       const decidedColor = currentColorArrangement[i]
 
@@ -39,8 +41,9 @@ const App = () => {
     }
   }
   
+  //rows and columns of three functions
   const checkForColumnOfThree = () => {
-    for (let i = 0; i < 47; i++){
+    for (let i = 0; i <= 47; i++){
       const columnOfThree = [i, i +width, i + width * 2]
       const decidedColor = currentColorArrangement[i]
 
@@ -64,17 +67,40 @@ const App = () => {
     }
   }
 
+  //funtion to ensure that the squares loop filling the square below and above
   const moveIntoSquareBelow = () => {
-    for (let i = 0; i < 64 - width; i++){
+    for (let i = 0; i <= 55; i++){
+      const firstRow = [0, 1, 2, 3, 4, 5, 6, 7]
+      const isFirstRow = firstRow.includes(i)
+
+      if (isFirstRow && currentColorArrangement[i] === '') {
+        let randomNumber = Math.floor(Math.random() * candyColors.length)
+        currentColorArrangement[i] = candyColors[randomNumber]
+      }
 
       if ((currentColorArrangement[i + width]) === '') {
           currentColorArrangement[i + width] = currentColorArrangement[i]
           currentColorArrangement[i] = ''
       }
-
     }
   }
+  //calling the functions for drag
 
+  const dragStart = (e) => {
+    console.log(e.target)
+    console.log('drag start')
+  }
+
+  const dragDrop = (e) => {
+    console.log(e.target)
+    console.log('drag drop')
+  }
+
+  const dragEnd = (e) => {
+    console.log(e.target)
+    console.log('drag end')
+  }
+  //first function to create the board output
   const createBoard = () => {
     //set the random numbers to pass from 0 to 5 into the candy colours
     const randomColorArrangement = []
@@ -99,13 +125,13 @@ const App = () => {
       moveIntoSquareBelow()
       
       setCurrentColorArrangement([...currentColorArrangement])
-    }, 1000)
+    }, 100)
     
     return () => clearInterval(timer)
 
   }, [checkForColumnOfFour, checkForRowOfFour, checkForColumnOfThree, checkForRowOfThree, moveIntoSquareBelow, currentColorArrangement])
   
-  console.log(currentColorArrangement) 
+  //console.log(currentColorArrangement) 
 
   return (
     <div className="app"> 
@@ -114,7 +140,17 @@ const App = () => {
           <img
             key={index}
             style={{backgroundColor: candyColor}}
-            //alt={candyColor}
+            alt={candyColor}
+
+            //include the drag react attributes
+            data-id={index}
+            draggable={true}
+            onDragStart={dragStart}
+            onDragOver={(e) => e.preventDefault()}
+            onDragEnter={(e) => e.preventDefault()}
+            onDragLeave={(e) => e.preventDefault()}
+            onDrop={dragDrop}
+            onDragEnd={dragEnd}
           /> 
 
         ))}
