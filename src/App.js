@@ -13,7 +13,8 @@ const candyColors = [
 //app function
 const App = () => {
   const [currentColorArrangement, setCurrentColorArrangement] = useState([])
-  
+  const [squareBeingDragged, setSquareBeingDragged] = useState(null)
+  const [squareBeingReplaced, setSquareBeingReplaced] = useState(null)
 
 //rows and columns of four function
   const checkForColumnOfFour = () => {
@@ -89,16 +90,26 @@ const App = () => {
   const dragStart = (e) => {
     console.log(e.target)
     console.log('drag start')
+    setSquareBeingDragged(e.target)
   }
 
   const dragDrop = (e) => {
     console.log(e.target)
     console.log('drag drop')
+    setSquareBeingReplaced(e.target)
   }
 
   const dragEnd = (e) => {
-    console.log(e.target)
     console.log('drag end')
+
+    const squareBeingDraggedId = parseInt(squareBeingDragged.getAttribute('data-id'))
+    const squareBeingReplacedId = parseInt(squareBeingReplaced.getAttribute('data-id'))
+
+    currentColorArrangement[squareBeingDraggedId] =squareBeingDragged.style.backgroundColor 
+    currentColorArrangement[squareBeingDraggedId] =squareBeingDragged.style.backgroundColor 
+
+    console.log('squareBeingDraggedId', squareBeingDraggedId)
+    console.log('squareBeingReplacedId', squareBeingReplacedId)
   }
   //first function to create the board output
   const createBoard = () => {
