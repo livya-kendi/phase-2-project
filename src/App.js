@@ -1,4 +1,11 @@
 import { useEffect, useState } from "react"
+import BlueCandy from'./images/blue-candy.jpg'
+import GreenCandy from'./images/green-candy.jpg'
+import OrangeCandy from'./images/orange-candy.jpg'
+import PurpleCandy from'./images/purple-candy.jpg'
+import RedCandy from'./images/red-candy.jpg'
+import YellowCandy from'./images/yellow-candy.jpg'
+import Blank from'./images/blank.jpg'
 
 const width = 8
 const candyColors = [
