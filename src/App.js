@@ -14,6 +14,17 @@ const candyColors = [
 const App = () => {
   const [currentColorArrangement, setCurrentColorArrangement] = useState([])
 
+  const checkForColumnOfThree = () => {
+    for (let i=0; i<47; i++){
+      const columnOfThree = [i, i +width, i + width *2]
+      const decidedColor = currentColorArrangement[i]
+
+      if(columnOfThree.every(square => currentColorArrangement[square] === decidedColor)){
+        columnOfThree.forEach(square => currentColorArrangement[square] = '')
+      }
+    }
+  }
+
   const createBoard = () => {
     //set the random numbers to pass from 0 to 5 into the candy colours
     const randomColorArrangement = []
@@ -28,6 +39,15 @@ const App = () => {
     createBoard()
   }, [])
 
+  useEffect(() =>{
+
+    const timer = setInterval(() =>{
+      checkForColumnOfThree()
+    }, 100)
+    
+    return () => clearInterval(timer)
+
+  },[checkForColumnOfThree])
   console.log(currentColorArrangement) 
 
   return (
@@ -37,6 +57,7 @@ const App = () => {
           <img
             key={index}
             style={{backgroundColor: candyColor}}
+            //alt={candyColor}
           /> 
 
         ))}
