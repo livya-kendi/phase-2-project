@@ -13,3 +13,15 @@ flex-wrap: wrap;
   width: 70px;
   height: 70px;
 }
+.score-board{
+  float: right;
+  margin-left: 8px;
+}
+h2{
+  background-color: brown;
+  color: aqua;
+  text-align: center;
+  font-size: 40px;
+  padding: 5px;
+  border-radius: 20%;
+}
