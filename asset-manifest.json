@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/livya-kendi.github.io/phase-2-project/static/css/main.e716befc.css",
+    "main.js": "/livya-kendi.github.io/phase-2-project/static/js/main.bd60b3e4.js",
+    "static/media/purple-candy.jpg": "/livya-kendi.github.io/phase-2-project/static/media/purple-candy.d9b412cd9151cd6c6c2f.jpg",
+    "static/media/blue-candy.jpg": "/livya-kendi.github.io/phase-2-project/static/media/blue-candy.d6bb7ed919e26e6a2e25.jpg",
+    "index.html": "/livya-kendi.github.io/phase-2-project/index.html",
+    "main.e716befc.css.map": "/livya-kendi.github.io/phase-2-project/static/css/main.e716befc.css.map",
+    "main.bd60b3e4.js.map": "/livya-kendi.github.io/phase-2-project/static/js/main.bd60b3e4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e716befc.css",
+    "static/js/main.bd60b3e4.js"
+  ]
+}
